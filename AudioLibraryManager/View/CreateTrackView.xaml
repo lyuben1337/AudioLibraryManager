@@ -1,0 +1,32 @@
+﻿<Window x:Class="AudioLibraryManager.View.CreateTrackView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AudioLibraryManager.View"
+        mc:Ignorable="d"
+        Title="CreateTrackView" Height="350" Width="300">
+    <Grid VerticalAlignment="Center">
+        <StackPanel Margin="10">
+            <TextBlock Text="Name:"/>
+            <TextBox Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Duration:"/>
+            <TextBox Text="{Binding Duration, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Release Date:"/>
+            <DatePicker SelectedDate="{Binding ReleaseDate, Mode=TwoWay}" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Author:"/>
+            <ComboBox ItemsSource="{Binding Authors}" DisplayMemberPath="Name" SelectedItem="{Binding Author, Mode=TwoWay}" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Genre:"/>
+            <ComboBox ItemsSource="{Binding Genres}" DisplayMemberPath="Name" SelectedItem="{Binding Genre, Mode=TwoWay}" Margin="0,0,0,10"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <Button Content="Create" Width="100" Margin="20" Click="CreateBtn_Click"/>
+                <Button Content="Cancel" Width="100" Margin="20" Click="CancelBtn_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

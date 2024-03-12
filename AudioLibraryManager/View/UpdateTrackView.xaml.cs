@@ -21,14 +21,14 @@ namespace AudioLibraryManager.View
             NameField.Text = UpdatedTrack.Name;
             DurationField.Text = UpdatedTrack.Duration.ToString("mm:ss");
             ReleaseDateField.SelectedDate = UpdatedTrack.ReleaseDate;
-            AuthorField.SelectedItem = UpdatedTrack.Author;
-            GenreField.SelectedItem = UpdatedTrack.Genre;
+            AuthorField.SelectedItem = Authors.Find(a => a.Id == UpdatedTrack.Author.Id);
+            GenreField.SelectedItem = Genres.Find(g => g.Id == UpdatedTrack.Genre.Id);
         }
 
         private static TimeOnly MINIMAL_TRACK_DURATION = new TimeOnly(0, 0, 10);
         private static TimeOnly MAXIMAL_TRACK_DURATION = new TimeOnly(0, 1, 0);
 
-        private void CreateBtn_Click(object sender, RoutedEventArgs e)
+        private void UpdateBtn_Click(object sender, RoutedEventArgs e)
         {
             TimeOnly duration = new TimeOnly();
 

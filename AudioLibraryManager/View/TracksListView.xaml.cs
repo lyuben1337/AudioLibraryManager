@@ -27,7 +27,7 @@ namespace AudioLibraryManager.View
 
         public TracksListView()
         {
-            TrackRepository.Initialize(new List<Track>());
+            TrackRepository.Initialize(JsonUtils.GetTracksJson());
             InitializeComponent();
             updateData();
             DataContext = this;
@@ -97,6 +97,16 @@ namespace AudioLibraryManager.View
         }
 
         public void OnGenreDeleted(object sender, GenreDeletedEventArgs e)
+        {
+            updateData();
+        }
+
+        public void OnAuthorDeleted(object sender, AuthorDeletedEventArgs e)
+        {
+            updateData();
+        }
+
+        public void OnAuthorUpdated(object sender, AuthorUpdatedEventArgs e)
         {
             updateData();
         }

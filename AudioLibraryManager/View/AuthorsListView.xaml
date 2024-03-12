@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              Height="450" Width="400">
     <Grid>
-        <DataGrid x:Name="authorDataGrid"
+        <DataGrid x:Name="AuthorDataGrid"
                   Height="420"
                   VerticalAlignment="Top"
                   ItemsSource="{Binding Authors}" 

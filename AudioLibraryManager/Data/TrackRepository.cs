@@ -1,6 +1,8 @@
 ﻿using AudioLibraryManager.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 
 namespace AudioLibraryManager.Data
 {
@@ -14,7 +16,7 @@ namespace AudioLibraryManager.Data
         {
         }
 
-        public static void DeleteAllByGenre (Genre genre)
+        public static void DeleteAllByGenre(Genre genre)
         {
             if (genre == null)
             {
@@ -22,7 +24,36 @@ namespace AudioLibraryManager.Data
             }
 
             var updatedList = Instance.GetAll();
-            updatedList.RemoveAll(t => t.Genre == genre);
+
+            updatedList.RemoveAll(t => t.Genre.Id == genre.Id);
+
+            Instance.UpdateAll(updatedList);
+        }
+
+        public static void DeleteAllByAuthor(Author author)
+        {
+            if(author == null)
+            {
+                return;
+            }
+
+            var updatedList = Instance.GetAll();
+            updatedList.RemoveAll(t => t.Author.Id == author.Id);
+
+            Instance.UpdateAll(updatedList);
+        }
+
+        public static void UpdateAllByAuthor(Author author)
+        {
+            if(author == null) 
+            {
+                return;
+            }
+
+            var updatedList = Instance.GetAll();
+            updatedList
+                .FindAll(t => t.Author.Id == author.Id)
+                .ForEach(t => t.Author = author);
 
             Instance.UpdateAll(updatedList);
         }

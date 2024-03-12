@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AudioLibraryManager.Shared;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +10,7 @@ namespace AudioLibraryManager.Model
 {
     public class Track
     {
-        public Guid Id { get; } = Guid.NewGuid();
+        public string Id { get; set; } = Guid.NewGuid().ToString();
         public string Name { get; set; }
 
         public TimeOnly Duration { get; set; }

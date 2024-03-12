@@ -25,6 +25,8 @@ namespace AudioLibraryManager
             InitializeComponent();
 
             GenresListView.GenreDeleted += TracksListView.OnGenreDeleted;
+            AuthorsListView.AuthorDeleted += TracksListView.OnAuthorDeleted;
+            AuthorsListView.AuthorUpdated += TracksListView.OnAuthorUpdated;
         }
     }
 }

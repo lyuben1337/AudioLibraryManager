@@ -12,6 +12,8 @@ namespace AudioLibraryManager.Shared
 
         private static string GENRES_PATH = Path.Combine(BASE_DIRECTORY, "Json\\genres.json");
 
+        private static string TRACKS_PATH = Path.Combine(BASE_DIRECTORY, "Json\\tracks.json");
+
         public static string GetAuthorsJson()
         {
             try
@@ -29,6 +31,18 @@ namespace AudioLibraryManager.Shared
             try
             {
                 return File.ReadAllText(GENRES_PATH);
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
+        public static string GetTracksJson()
+        {
+            try
+            {
+                return File.ReadAllText(TRACKS_PATH);
             }
             catch
             {

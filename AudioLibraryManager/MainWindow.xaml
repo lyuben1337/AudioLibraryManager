@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Title="MainWindow" 
-        Height="500" Width="1050">
+        Height="500" Width="1150">
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="510"/>
             <ColumnDefinition Width="410"/>
-            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="210"/>
         </Grid.ColumnDefinitions>
         <view:TracksListView x:Name="TracksListView" Margin="2" Grid.Column="0"/>
         <view:AuthorsListView x:Name="AuthorsListView" Margin="2" Grid.Column="1"/>

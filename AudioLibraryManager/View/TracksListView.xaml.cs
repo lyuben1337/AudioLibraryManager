@@ -86,6 +86,18 @@ namespace AudioLibraryManager.View
             updateData();
         }
 
+        private void GetInfoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = TrackDataGrid.SelectedItem;
+            if (selectedItem == null)
+            {
+                MessageBox.Show("Select track to get info");
+                return;
+            }
+
+            new GetTrackInfoView((Track) selectedItem).ShowDialog();
+        }
+
         private void updateData()
         {
             Tracks = new ObservableCollection<Track>(TrackRepository.Instance.GetAll());

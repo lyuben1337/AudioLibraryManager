@@ -1,5 +1,6 @@
 ﻿using AudioLibraryManager.Data;
 using AudioLibraryManager.Model;
+using AudioLibraryManager.Shared;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,7 +28,7 @@ namespace AudioLibraryManager.View
 
         public AuthorsListView()
         {
-            AuthorRepository.Initialize(new List<Author>());
+            AuthorRepository.Initialize(JsonUtils.GetAuthorsJson());
 
             InitializeComponent();
             updateData();
@@ -41,8 +42,23 @@ namespace AudioLibraryManager.View
 
         private void CreateBtn_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            var CreateTrackWindow = new CreateTrackView();
-            CreateTrackWindow.ShowDialog();
+            var createAuthorView = new CreateAuthorView();
+            createAuthorView.ShowDialog();
+            if (createAuthorView.NewAuthor != null)
+            {
+                AuthorRepository.Instance.Add(createAuthorView.NewAuthor);
+                updateData();
+            }
+        }
+
+        private void UpdateBtn_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteBtn_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

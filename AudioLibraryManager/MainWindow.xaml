@@ -5,16 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:view="clr-namespace:AudioLibraryManager.View"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="MainWindow" 
         Height="500" Width="1050">
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="500"/>
-            <ColumnDefinition Width="400"/>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="510"/>
+            <ColumnDefinition Width="410"/>
+            <ColumnDefinition Width="110"/>
         </Grid.ColumnDefinitions>
-        <view:TracksListView Margin="2" Grid.Column="0"/>
-        <view:AuthorsListView Margin="2" Grid.Column="1"/>
-        <view:GenresListView Margin="2" Grid.Column="2"/>
+        <view:TracksListView x:Name="TracksListView" Margin="2" Grid.Column="0"/>
+        <view:AuthorsListView x:Name="AuthorsListView" Margin="2" Grid.Column="1"/>
+        <view:GenresListView x:Name="GenresListView" Margin="2" Grid.Column="2"/>
     </Grid>
 </Window>

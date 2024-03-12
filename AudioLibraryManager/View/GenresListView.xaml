@@ -6,13 +6,14 @@
         mc:Ignorable="d"
         Height="450" Width="100">
     <Grid>
-        <DataGrid Height="420" VerticalAlignment="Top" x:Name="genreDataGrid" ItemsSource="{Binding Genres}" AutoGenerateColumns="False" HeadersVisibility="Column">
+        <DataGrid Height="390" IsReadOnly="True" VerticalAlignment="Top" x:Name="GenreDataGrid" ItemsSource="{Binding Genres}" AutoGenerateColumns="False" HeadersVisibility="Column">
             <DataGrid.Columns>
-                <DataGridTextColumn IsReadOnly="True" Header="Genre" Binding="{Binding Name}" Width="*" />
+                <DataGridTextColumn Header="Genre" Binding="{Binding Name}" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel  Height="30" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+        <StackPanel  Height="60" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom">
             <Button Content="Create" Width="80" Margin="5" Click="CreateBtn_Click"/>
+            <Button Content="Delete" Width="80" Margin="5" Click="DeleteBtn_Click"/>
         </StackPanel>
     </Grid>
 </UserControl>

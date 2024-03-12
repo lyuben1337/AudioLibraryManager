@@ -83,6 +83,39 @@ namespace AudioLibraryManager.Data
             }
         }
 
+        public void Update(T oldItem, T newItem)
+        {
+            if(oldItem == null || newItem == null)
+            {
+                return;
+            }
+            
+            var index = items.IndexOf(oldItem);
+            if (index == -1)
+            {
+                return;
+            }
+
+            items[index] = newItem;
+        }
+
+        public void Delete(T item)
+        {
+            if (item == null)
+            {
+                return;
+            }
+
+            var index = items.IndexOf(item);
+
+            if (index == -1)
+            {
+                return;
+            }
+
+            items.RemoveAt(index);
+        }
+
         public void UpdateAll(List<T> updatedList)
         {
             items = updatedList;

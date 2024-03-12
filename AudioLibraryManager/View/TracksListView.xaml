@@ -6,18 +6,19 @@
              mc:Ignorable="d" 
              Height="450" Width="500">
     <Grid>
-        <DataGrid Height="420" VerticalAlignment="Top" x:Name="trackDataGrid" ItemsSource="{Binding Tracks}" AutoGenerateColumns="False"  HeadersVisibility="Column">
+        <DataGrid Height="420" VerticalAlignment="Top" IsReadOnly="True" x:Name="TrackDataGrid" ItemsSource="{Binding Tracks}" AutoGenerateColumns="False"  HeadersVisibility="Column">
             <DataGrid.Columns>
-                <DataGridTextColumn IsReadOnly="True" Header="Track" Binding="{Binding Name}" Width="*" />
-                <DataGridTextColumn IsReadOnly="True" Header="Author" Binding="{Binding Author.Name}" Width="*" />
-                <DataGridTextColumn IsReadOnly="True" Header="Genre" Binding="{Binding Genre.Name}" Width="*" />
-                <DataGridTextColumn IsReadOnly="True" Header="Duration" Binding="{Binding FormattedDuration}" Width="*" />
-                <DataGridTextColumn IsReadOnly="True" Header="Release Date" Binding="{Binding FormattedReleaseDate}" Width="*" />
+                <DataGridTextColumn Header="Track" Binding="{Binding Name}" Width="*" />
+                <DataGridTextColumn Header="Author" Binding="{Binding Author.Name}" Width="*" />
+                <DataGridTextColumn Header="Genre" Binding="{Binding Genre.Name}" Width="*" />
+                <DataGridTextColumn Header="Duration" Binding="{Binding FormattedDuration}" Width="*" />
+                <DataGridTextColumn Header="Release Date" Binding="{Binding FormattedReleaseDate}" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel  Height="30" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
             <Button Content="Create" Width="80" Margin="5" Click="CreateBtn_Click"/>
             <Button Content="Update" Width="80" Margin="5" Click="UpdateBtn_Click"/>
+            <Button Content="Delete" Width="80" Margin="5" Click="DeleteBtn_Click"/>
         </StackPanel>
     </Grid>
 </UserControl>

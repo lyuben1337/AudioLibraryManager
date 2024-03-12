@@ -3,25 +3,30 @@ using AudioLibraryManager.Model;
 using System;
 using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Documents;
 
 namespace AudioLibraryManager.View
 {
-    public partial class CreateTrackView : Window
+    public partial class UpdateTrackView : Window
     {
-        public Track NewTrack { get; set; }
-
+        public Track UpdatedTrack { get; set; }
         public List<Genre> Genres { get; set; } = GenreRepository.Instance.GetAll();
         public List<Author> Authors { get; set; } = AuthorRepository.Instance.GetAll();
-
-        private static TimeOnly MINIMAL_TRACK_DURATION = new TimeOnly(0, 0, 10);
-        private static TimeOnly MAXIMAL_TRACK_DURATION = new TimeOnly(0, 1, 0);
-
-        public CreateTrackView()
+        public UpdateTrackView(Track updatedTrack)
         {
             InitializeComponent();
             DataContext = this;
+
+            UpdatedTrack = updatedTrack;
+
+            NameField.Text = UpdatedTrack.Name;
+            DurationField.Text = UpdatedTrack.Duration.ToString("mm:ss");
+            ReleaseDateField.SelectedDate = UpdatedTrack.ReleaseDate;
+            AuthorField.SelectedItem = UpdatedTrack.Author;
+            GenreField.SelectedItem = UpdatedTrack.Genre;
         }
+
+        private static TimeOnly MINIMAL_TRACK_DURATION = new TimeOnly(0, 0, 10);
+        private static TimeOnly MAXIMAL_TRACK_DURATION = new TimeOnly(0, 1, 0);
 
         private void CreateBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -29,11 +34,11 @@ namespace AudioLibraryManager.View
 
             try
             {
-                if(string.IsNullOrEmpty(NameField.Text))
+                if (string.IsNullOrEmpty(NameField.Text))
                 {
                     throw new Exception("Track name must be given!");
                 }
-                var formattedInput = $"00:{DurationField.Text}"; 
+                var formattedInput = $"00:{DurationField.Text}";
                 if (!TimeOnly.TryParse(formattedInput, out duration))
                 {
                     throw new Exception("Time must be given and in correct format (mm:ss)");
@@ -60,18 +65,16 @@ namespace AudioLibraryManager.View
                     throw new Exception("Genre must be selected");
                 }
 
-                NewTrack = new Track
-                {
-                    Name = NameField.Text,
-                    Duration = duration,
-                    ReleaseDate = ReleaseDateField.SelectedDate.Value,
-                    Author = (Author)AuthorField.SelectedItem,
-                    Genre = (Genre)GenreField.SelectedItem
-                };
+                UpdatedTrack.Name = NameField.Text;
+                UpdatedTrack.Duration = duration;
+                UpdatedTrack.ReleaseDate = ReleaseDateField.SelectedDate.Value;
+                UpdatedTrack.Author = (Author) AuthorField.SelectedItem;
+                UpdatedTrack.Genre = (Genre) GenreField.SelectedItem;
 
                 Close();
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

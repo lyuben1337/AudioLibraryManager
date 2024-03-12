@@ -40,7 +40,7 @@ namespace AudioLibraryManager.View
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message);
             }
         }
 

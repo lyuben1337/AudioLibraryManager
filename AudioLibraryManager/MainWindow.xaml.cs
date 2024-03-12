@@ -23,6 +23,8 @@ namespace AudioLibraryManager
         public MainWindow()
         {
             InitializeComponent();
+
+            GenresListView.GenreDeleted += TracksListView.OnGenreDeleted;
         }
     }
 }

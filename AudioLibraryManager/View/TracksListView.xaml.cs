@@ -28,6 +28,7 @@ namespace AudioLibraryManager.View
         public TracksListView()
         {
             TrackRepository.Initialize(JsonUtils.GetTracksJson());
+
             InitializeComponent();
             updateData();
             DataContext = this;

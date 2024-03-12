@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AudioLibraryManager.Data;
+using AudioLibraryManager.Shared;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,9 +17,6 @@ using System.Windows.Shapes;
 
 namespace AudioLibraryManager
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -27,6 +26,15 @@ namespace AudioLibraryManager
             GenresListView.GenreDeleted += TracksListView.OnGenreDeleted;
             AuthorsListView.AuthorDeleted += TracksListView.OnAuthorDeleted;
             AuthorsListView.AuthorUpdated += TracksListView.OnAuthorUpdated;
+
+            Closed += OnMainWindowClosed;
+        }
+
+        private void OnMainWindowClosed(object? sender, EventArgs e)
+        {
+            JsonUtils.SaveAuthorsJson(AuthorRepository.Instance.ToJson());
+            JsonUtils.SaveGenresJson(GenreRepository.Instance.ToJson());
+            JsonUtils.SaveTracksJson(TrackRepository.Instance.ToJson());
         }
     }
 }

@@ -33,6 +33,7 @@ namespace AudioLibraryManager.View
         public GenresListView()
         {
             GenreRepository.Initialize(JsonUtils.GetGenresJson());
+
             InitializeComponent();
             updateData();
             DataContext = this;

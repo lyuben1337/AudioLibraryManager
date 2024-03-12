@@ -66,15 +66,15 @@ namespace AudioLibraryManager.Data
             return items;
         }
 
-        public string ToJson(List<T> list)
+        public string ToJson()
         {
-            if (list == null)
+            if (items == null)
             {
-                throw new ArgumentNullException(nameof(list));
+                throw new ArgumentNullException(nameof(items));
             }
             try
             {
-                string json = JsonConvert.SerializeObject(list, Formatting.Indented);
+                string json = JsonConvert.SerializeObject(items, Formatting.Indented);
                 return json;
             }
             catch (JsonException ex)

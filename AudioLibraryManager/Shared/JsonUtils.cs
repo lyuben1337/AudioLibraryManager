@@ -49,5 +49,41 @@ namespace AudioLibraryManager.Shared
                 return "";
             }
         }
+
+        public static void SaveGenresJson(string genresJson)
+        {
+            try
+            {
+                File.WriteAllText(GENRES_PATH, genresJson);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving genres JSON: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        public static void SaveTracksJson(string tracksJson)
+        {
+            try
+            {
+                File.WriteAllText(TRACKS_PATH, tracksJson);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving tracks JSON: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        public static void SaveAuthorsJson(string authorsJson)
+        {
+            try
+            {
+                File.WriteAllText(AUTHORS_PATH, authorsJson);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving authors JSON: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }
